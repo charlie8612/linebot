@@ -9,8 +9,16 @@ var bot = linebot({
 
 bot.on('message', function(event) {
     console.log("message, event trigger!");
-    console.log(event); //把收到訊息的 event 印出來看看
+    event.reply(event.message.text).then(function (data) {
+    // success
+    console.log(event);
+    }).catch(function (error) {
+    // error
+    console.log("ERROR!");
+    });
 });
+
+bot.listen('/linewebhook', 3000);
 
 const app = express();
 const linebotParser = bot.parser();
