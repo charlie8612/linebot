@@ -19,13 +19,15 @@ module.exports = class SkillHandleDeliveryOrder {
                     }
                 },
                 parser: (value, bot, event, context, resolve, reject) => {
-                    console.log(event);
+                    console.log("parser");
                     if (["松", "竹", "梅"].includes(value)) {
                         return resolve(value);
                     }
+
                     return reject();
                 },
                 reaction: (error, value, bot, event, context, resolve, reject) => {
+                    console.log("reaction");
                     if (error) return resolve();
 
                     bot.queue({
@@ -41,6 +43,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     text: "どちらにお届けしましょっ？"
                 },
                 parser: (value, bot, event, context, resolve, reject) => {
+                    console.log("add-parser");                    
                     if (typeof value == "string"){
                         return resolve(value);
                     } else if (typeof value == "object" && value.type == "location"){
