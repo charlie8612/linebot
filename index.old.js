@@ -35,7 +35,7 @@ line_bot.listen('/linewebhook', 3000);
 const linebotParser = line_bot.parser();
 // -----------------------------------------------------------------------------
 // ルーター設定
-server.post('/', line.middleware(line_config), (req, res, next) => {
+server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     console.log("in post");
     // 先行してLINE側にステータスコード200でレスポンスする。
     res.sendStatus(200);
