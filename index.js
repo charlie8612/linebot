@@ -17,7 +17,7 @@ var server_port = server.listen(process.env.PORT || 8080, function() {
 /*
 ** Mount bot-express
 */
-server.use("/linewebhook", bot_express({
+server.use("/", bot_express({
     nlu: {
         type: "dialogflow",
         options: {
