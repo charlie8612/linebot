@@ -15,28 +15,28 @@ const line_config = {
 
 // -----------------------------------------------------------------------------
 // Webサーバー設定
-server.listen(process.env.PORT || 3000);
-// var server_port = server.listen(process.env.PORT || 8080, function() {
-//   var the_web_port = server_port.address().port;
-//   console.log("App now running on port", the_web_port);
-// });
+// server.listen(process.env.PORT || 3000);
+var server_port = server.listen(process.env.PORT || 8080, function() {
+  var the_web_port = server_port.address().port;
+  console.log("App now running on port", the_web_port);
+});
 // APIコールのためのクライアントインスタンスを作成
 const bot = new line.Client(line_config);
 
 // Dialogflowのクライアントインスタンスを作成
-const nlu = new dialogflow(process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN, {language: "ja"});
+const nlu = new dialogflow(process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN, {language: "en"});
 
 
-/*var line_bot = linebot({
+var line_bot = linebot({
   channelId: "1575634603",
   channelAccessToken: process.env.LINE_ACCESS_TOKEN, // 環境変数からアクセストークンをセットしています
   channelSecret: process.env.LINE_CHANNEL_SECRET // 環境変数からChannel Secretをセットしています
 });
 line_bot.listen('/linewebhook', 3000);
-const linebotParser = line_bot.parser();*/
+const linebotParser = line_bot.parser();
 // -----------------------------------------------------------------------------
 // ルーター設定
-server.post("https://chslinebot5566.herokuapp.com/", line.middleware(line_config), (req, res, next) => {
+server.post('/linewebhook', linebotParser, (req, res, next) => {
     console.log("in post");
     // 先行してLINE側にステータスコード200でレスポンスする。
     res.sendStatus(200);
