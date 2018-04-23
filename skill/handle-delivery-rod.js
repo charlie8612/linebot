@@ -6,17 +6,11 @@ module.exports = class SkillHandleDeliveryOrder {
         this.required_parameter = {
             menu: {
                 message_to_confirm: {
-                    type: "template",
-                    altText: "YYY",
-                    template: {
-                        type: "buttons",
-                        text: "ご注文は？",
-                        actions: [
-                            {type: "message", label: "松", text: "松"},
-                            {type: "message", label: "竹", text: "竹"},
-                            {type: "message", label: "梅", text: "梅"}
-                        ]
-                    }
+                    line: {
+                        type: "text",
+                        text: "何色にしますか？"
+                    },
+                    return resolve("3333");
                 },
                 parser: (value, bot, event, context, resolve, reject) => {
                     console.log("parser");
