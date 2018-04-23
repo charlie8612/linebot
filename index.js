@@ -15,7 +15,6 @@ const line_config = {
 
 // -----------------------------------------------------------------------------
 // Webサーバー設定
-// server.listen(process.env.PORT || 3000);
 var server_port = server.listen(process.env.PORT || 8080, function() {
   var the_web_port = server_port.address().port;
   console.log("App now running on port", the_web_port);
@@ -36,10 +35,10 @@ line_bot.listen('/linewebhook', 3000);
 const linebotParser = line_bot.parser();
 // -----------------------------------------------------------------------------
 // ルーター設定
-server.post('/linewebhook', line.middleware(line_config), (req, res, next) => {
+server.post('/', linebotParser, (req, res, next) => {
     console.log("in post");
     // 先行してLINE側にステータスコード200でレスポンスする。
-    res.sendStatus(200);
+    res.sendStatus(200).send('Bad Request');
 
     // thread
     let events_processed = [];
