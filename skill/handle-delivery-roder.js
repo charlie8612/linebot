@@ -1,14 +1,13 @@
 "use strict";
 
 module.exports = class SkillHandleDeliveryOrder {
-    console.log("cons");
     constructor(){
         console.log("cons in");
         this.required_parameter = {
             menu: {
                 message_to_confirm: {
                     type: "template",
-                    altText: "YYY",
+                    altText: "出前のメニューは松、竹、梅の3種類になっとりますけどどちらにしましょっ？",
                     template: {
                         type: "buttons",
                         text: "ご注文は？",

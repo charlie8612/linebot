@@ -22,7 +22,7 @@ server.use("/", bot_express({
         type: "dialogflow",
         options: {
             client_access_token: process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN,
-            language: "en"
+            language: "ja"
         }
     },
     memory: {
