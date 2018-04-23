@@ -5,8 +5,8 @@ const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
 const dialogflow = require("apiai-promisified");
 
 // -----------------------------------------------------------------------------
-console.log(process.env.LINE_ACCESS_TOKEN);
-console.log(process.env.LINE_CHANNEL_SECRET);
+//console.log(process.env.LINE_ACCESS_TOKEN);
+//console.log(process.env.LINE_CHANNEL_SECRET);
 // パラメータ設定
 const line_config = {
     channelAccessToken: process.env.LINE_ACCESS_TOKEN, // 環境変数からアクセストークンをセットしています
@@ -15,8 +15,10 @@ const line_config = {
 
 // -----------------------------------------------------------------------------
 // Webサーバー設定
-server.listen(process.env.PORT || 3000);
-
+var server_port = server.listen(process.env.PORT || 8080, function() {
+  var the_web_port = server_port.address().port;
+  console.log("App now running on port", the_web_port);
+});
 // APIコールのためのクライアントインスタンスを作成
 const bot = new line.Client(line_config);
 
@@ -28,10 +30,8 @@ const nlu = new dialogflow(process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN, {language
 server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     // 先行してLINE側にステータスコード200でレスポンスする。
     res.sendStatus(200);
-
     // thread
     let events_processed = [];
-
     // イベントオブジェクトを順次処理。
     req.body.events.forEach((event) => {
         // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
@@ -48,7 +48,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
                         } else {
                             message = {
                                 type: "text",
-                                text: `毎度！ご注文は？`
+                                text: `HIHI!!`
                             }
                         }
                         return bot.replyMessage(event.replyToken, message);
