@@ -38,7 +38,7 @@ const linebotParser = line_bot.parser();
 server.post('/', line.middleware(line_config), (req, res, next) => {
     console.log("in post");
     // 先行してLINE側にステータスコード200でレスポンスする。
-    res.sendStatus(200).send('Bad Request');
+    res.sendStatus(200);
 
     // thread
     let events_processed = [];
