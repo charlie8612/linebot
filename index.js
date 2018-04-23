@@ -5,6 +5,8 @@ const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
 const dialogflow = require("apiai-promisified");
 
 // -----------------------------------------------------------------------------
+console.log(process.env.LINE_ACCESS_TOKEN);
+console.log(process.env.LINE_CHANNEL_SECRET);
 // パラメータ設定
 const line_config = {
     channelAccessToken: process.env.LINE_ACCESS_TOKEN, // 環境変数からアクセストークンをセットしています
