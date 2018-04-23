@@ -1,8 +1,9 @@
 "use strict";
 
 module.exports = class SkillHandleDeliveryOrder {
-
+    console.log("cons");
     constructor(){
+        console.log("cons in");
         this.required_parameter = {
             menu: {
                 message_to_confirm: {
@@ -43,7 +44,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     text: "どちらにお届けしましょっ？"
                 },
                 parser: (value, bot, event, context, resolve, reject) => {
-                    console.log("add-parser");                    
+                    console.log("add-parser");
                     if (typeof value == "string"){
                         return resolve(value);
                     } else if (typeof value == "object" && value.type == "location"){
