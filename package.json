@@ -6,13 +6,13 @@
     "start": "node ."
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "dependencies": {
-    "@line/bot-sdk": "^6.0.1",
+    "@line/bot-sdk": "^5.0.1",
     "apiai-promisified": "^1.0.1",
-    "bot-express": "^0.2.21",
-    "express": "^4.16.3",
+    "bot-express": "^0.2.15",
+    "express": "^4.16.2",
     "linebot": "^1.4.1"
   }
 }
