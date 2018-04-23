@@ -19,6 +19,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     }
                 },
                 parser: (value, bot, event, context, resolve, reject) => {
+                    console.log(event);
                     if (["松", "竹", "梅"].includes(value)) {
                         return resolve(value);
                     }

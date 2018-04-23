@@ -9,19 +9,21 @@ const bot_express = require("bot-express");
 /*
 ** Middleware Configuration
 */
-server.listen(process.env.PORT || 5000, () => {
-    console.log("server is running...");
+var server_port = server.listen(process.env.PORT || 8080, function() {
+  var the_web_port = server_port.address().port;
+  console.log("App now running on port", the_web_port);
 });
 
 /*
 ** Mount bot-express
 */
 server.use("/", bot_express({
+    console.log("in server");
     nlu: {
         type: "dialogflow",
         options: {
             client_access_token: process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN,
-            language: "en"
+            language: "ch-tw"
         }
     },
     memory: {
