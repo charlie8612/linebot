@@ -20,7 +20,7 @@ var bot = linebot({
   channelSecret: process.env.LINE_CHANNEL_SECRET,
   channelAccessToken: process.env.LINE_ACCESS_TOKEN
 });
-
+bot.listen('/linewebhook', 3000);
 bot.on('message', function(event) {
     console.log("message, event trigger!");
     event.reply(event.message.text).then(function (data) {
