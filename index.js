@@ -26,13 +26,13 @@ const bot = new line.Client(line_config);
 const nlu = new dialogflow(process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN, {language: "en"});
 
 
-var bot = linebot({
+var line_bot = linebot({
   channelId: "1575634603",
   channelAccessToken: process.env.LINE_ACCESS_TOKEN, // 環境変数からアクセストークンをセットしています
   channelSecret: process.env.LINE_CHANNEL_SECRET // 環境変数からChannel Secretをセットしています
 });
-bot.listen('/linewebhook', 3000);
-const linebotParser = bot.parser();
+line_bot.listen('/linewebhook', 3000);
+const linebotParser = line_bot.parser();
 // -----------------------------------------------------------------------------
 // ルーター設定
 server.post('/', linebotParser, (req, res, next) => {
