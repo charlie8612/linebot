@@ -18,7 +18,6 @@ var server_port = server.listen(process.env.PORT || 8080, function() {
 ** Mount bot-express
 */
 server.use("/", bot_express({
-    console.log("in server");
     nlu: {
         type: "dialogflow",
         options: {
