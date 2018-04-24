@@ -1,16 +1,22 @@
 "use strict";
 
 module.exports = class SkillHandleDeliveryOrder {
+    debug("\nBot Express\n");
     constructor(){
-        console.log("cons in");
         this.required_parameter = {
             menu: {
                 message_to_confirm: {
-                    line: {
-                        type: "text",
-                        text: "何色にしますか？"
-                    },
-                    return resolve("3333");
+                    type: "template",
+                    altText: "YYY",
+                    template: {
+                        type: "buttons",
+                        text: "ご注文は？",
+                        actions: [
+                            {type: "message", label: "松", text: "松"},
+                            {type: "message", label: "竹", text: "竹"},
+                            {type: "message", label: "梅", text: "梅"}
+                        ]
+                    }
                 },
                 parser: (value, bot, event, context, resolve, reject) => {
                     console.log("parser");

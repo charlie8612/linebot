@@ -5,6 +5,8 @@
 */
 const server = require("express")();
 const bot_express = require("bot-express");
+
+const debug = require("debug")("bot-express:index");
 /*
 ** Middleware Configuration
 */
@@ -23,7 +25,7 @@ server.use("/", bot_express({
         options: {
             client_access_token: process.env.DIALOGFLOW_CLIENT_ACCESS_TOKEN,
             language: "ja"
-        }
+        },
     },
     memory: {
         type: "memory-cache",
