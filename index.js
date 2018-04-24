@@ -40,7 +40,11 @@ server.use("/", bot_express({
     default_skill: process.env.DEFAULT_SKILL,
     google_project_id: process.env.GOOGLE_PROJECT_ID,
     google_api_key: process.env.GOOGLE_API_KEY,
-    auto_translation: process.env.AUTO_TRANSLATION
+    auto_translation: process.env.AUTO_TRANSLATION,
+    beacon_skill: {
+        enter: "survey",
+        leave: "bye"
+    }
 }));
 
 module.exports = server;

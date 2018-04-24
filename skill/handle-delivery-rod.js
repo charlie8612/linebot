@@ -1,5 +1,7 @@
 "use strict";
 
+const debug = require("debug")("bot-express:skill");
+
 module.exports = class SkillHandleDeliveryOrder {
     debug("\nBot Express\n");
     constructor(){
