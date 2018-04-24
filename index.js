@@ -5,8 +5,6 @@
 */
 const server = require("express")();
 const bot_express = require("bot-express");
-
-const debug = require("debug")("bot-express:index");
 /*
 ** Middleware Configuration
 */
@@ -19,7 +17,7 @@ var server_port = server.listen(process.env.PORT || 8080, function() {
 /*
 ** Mount bot-express
 */
-server.use("/", bot_express({
+server.use("/webhook", bot_express({
     nlu: {
         type: "dialogflow",
         options: {
